@@ -23,12 +23,11 @@ class admin_redirects
     public function redirects()
     {
 
-        $mode = getRequest("data");
+        $data = getRequest("data");
 
-        if (sizeof($mode)>0) {
+        if (sizeof($data)>0) {
             $sources = array();
             $redirects = redirects::getInstance();
-            $data = getRequest("data");
             //проверяем текущие и обновляем
             if (!empty($data["old"])) {
                 foreach ($data["old"] as $key => $item) {
@@ -90,7 +89,6 @@ class admin_redirects
      */
     public function redirect_add()
     {
-        $type = "banner";
         $mode = (string)getRequest("param0");
 
         if ($mode == "do") {
